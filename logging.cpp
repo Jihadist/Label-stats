@@ -4,11 +4,11 @@ void Logging::messageHandler(QtMsgType type, const QMessageLogContext &context,
                              const QString &msg) {
   QFile logFile("log.txt");
   logFile.open(QFile::Append | QFile::Text);
-  // Открываем поток записи в файл
+  // Open stream to file
   QTextStream out(&logFile);
-  // Записываем дату записи
+  // Log datetime
   out << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz ");
-  // По типу определяем, к какому уровню относится сообщение
+  // Detect type of msg
   switch (type) {
   case QtInfoMsg:
     out << "INF ";
@@ -26,17 +26,12 @@ void Logging::messageHandler(QtMsgType type, const QMessageLogContext &context,
     out << "FTL ";
     break;
   }
-  // Записываем в вывод категорию сообщения и само сообщение
+  // Write category and msg
   out << context.category << ": " << msg << endl;
-  out.flush(); // Очищаем буферизированные данные
+  out.flush(); // Flush buffer
 }
 
 Q_LOGGING_CATEGORY(logDebug, "Debug")
 Q_LOGGING_CATEGORY(logInfo, "Info")
 Q_LOGGING_CATEGORY(logWarning, "Warning")
 Q_LOGGING_CATEGORY(logCritical, "Critical")
-
-// Logging::Logging()
-//{
-
-//}

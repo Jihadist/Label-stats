@@ -35,19 +35,19 @@ private:
 
   int selectStats();
   int selectStats(const QString &Artist);
+  int selectStats(const QString &Artist, const QString &Track);
 
   int selectArtist();
   int selectArtist(const QString &Artist);
 
   int selectTracks(const QString &Artist);
+
   int selectStreams(const QString &Artist);
+
   int selectIncome(const QString &Artist);
   int selectIncome(const QString &Artist, const QString &Track);
 
   int selectProfit(const QString &Artist);
-
-  int selectStats(const QString &Artist, const QString &Track);
-
   int selectProfit(const QString &Artist, const QString &Track);
 
 public slots:

@@ -34,6 +34,7 @@ Settings::Settings(QWidget *parent)
       QOverload<const QString &>::of(&QComboBox::currentIndexChanged),
       [=](const QString &Artist) {
         qDebug() << Artist;
+        // artistUI.flush();
         if ((artistUI.getArtistIndex() == 0) | (Artist == "Все артисты"))
           qDebug() << "Error code:" << selectStats();
         else {
@@ -56,7 +57,6 @@ Settings::Settings(QWidget *parent)
 
         if (Track == "Все треки" && ArtistCounter > 0 && TrackCounter > 0) {
           qDebug() << "Выбраны все треки";
-          // emit artistUI.getArtistsBox()->currentIndexChanged(Artist);
           bufferString = Artist;
           qDebug() << "Error code:" << selectArtist(Artist);
         } else {
@@ -78,7 +78,7 @@ bool Settings::createDB() {
   }
   QSqlQuery query;
 
-  // db.setDatabaseName("test.dev.db");
+  // Here is example db name
   dbFilePath = "test.dev.db";
   db.setDatabaseName(dbFilePath);
   if (!db.open()) {
@@ -314,7 +314,6 @@ int Settings::selectIncome(const QString &Artist) {
   selectQuery->addBindValue(Artist);
   if (selectQuery->exec() && selectQuery->next()) {
     artistUI.setIncomePerArtist(selectQuery->value(0).toDouble());
-    // artistUI.setGlobalStreamsPerArtist(selectQuery->value(0).toInt());
   } else {
     qDebug() << selectQuery->lastQuery();
     qDebug() << "error";
@@ -384,8 +383,7 @@ int Settings::selectIncome(const QString &Artist, const QString &Track) {
   selectQuery->addBindValue(Track);
   if (selectQuery->exec() && selectQuery->next()) {
     artistUI.setIncomePerTrack(selectQuery->value(0).toDouble());
-    // artistUI.setIncomePerArtist(selectQuery->value(0).toDouble());
-    // artistUI.setGlobalStreamsPerArtist(selectQuery->value(0).toInt());
+
   } else {
     qDebug() << selectQuery->lastQuery();
     qDebug() << "error";
@@ -478,7 +476,6 @@ void Settings::on_saveAs_triggered() {
 
 bool Settings::saveProject() {
   QDir currentProjectDir(QDir::current());
-  // QString path = currentProjectDir.absoluteFilePath(projectFilePath);
   settings.setValue("LatestProjectPath",
                     currentProjectDir.absoluteFilePath(projectFilePath));
   QJsonObject object{{"DBFilePath", dbFilePath}};

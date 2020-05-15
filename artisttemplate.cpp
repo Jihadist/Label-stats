@@ -6,7 +6,6 @@ ArtistTemplate::ArtistTemplate(QWidget *parent)
   ui->setupUi(this);
   ui->artistBox->setEditText("Выберите артиста");
   ui->statsView->show();
-  // cash=Currency(QPair<QString,QString>("USD,RUB"));
 }
 
 ArtistTemplate::~ArtistTemplate() { delete ui; }
@@ -59,6 +58,14 @@ void ArtistTemplate::setFeeForDistributor(double fee) {
 
 void ArtistTemplate::setProfitPerArtist(double profit) {
   setValue(this, ui->profitPerArtistValue, profit);
+}
+
+void ArtistTemplate::flush() {
+  ui->profitPerArtistValue->clear();
+  ui->feeForAggregatorValue->clear();
+  ui->feeForDistributorValue->clear();
+  ui->incomePerArtistValue->clear();
+  ui->incomePerTrackValue->clear();
 }
 
 void ArtistTemplate::setValue(ArtistTemplate *T, QLabel *label, double value) {

@@ -37,6 +37,8 @@ public:
   void setFeeForDistributor(double fee);
   void setProfitPerArtist(double profit);
 
+  void flush();
+
 private:
   static void setValue(ArtistTemplate *T, QLabel *label, double value);
   Currency cash; //(QPair<QString,QString>("USD","RUB"));
