@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/main">
+        <file>res/background.svg</file>
+        <file>res/button.svg</file>
+        <file>res/Gora-Free.ttf</file>
+        <file>res/icon.png</file>
+    </qresource>
+</RCC>
