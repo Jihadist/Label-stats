@@ -64,10 +64,10 @@ void Currency::httpReadyRead() {
 
     } else
 
-      qDebug() << "Document is not an object" << endl;
+      qDebug() << "Document is not an object" << Qt::endl;
   else
 
-    qDebug() << "Invalid JSON...\n" << doc << endl;
+    qDebug() << "Invalid JSON...\n" << doc << Qt::endl;
 }
 
 #ifndef QT_NO_SSL

@@ -50,6 +50,9 @@ private:
   int selectProfit(const QString &Artist);
   int selectProfit(const QString &Artist, const QString &Track);
 
+  bool openProject(QString &filePath);
+  bool saveProject();
+
 public slots:
   void activate();
 
@@ -59,9 +62,6 @@ private slots:
   void on_openRecent_triggered();
   void on_saveAs_triggered();
   void on_save_triggered();
-
-  bool openProject(QString &filePath);
-  bool saveProject();
 
   void on_importCSV_triggered();
 

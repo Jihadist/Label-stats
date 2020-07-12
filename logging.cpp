@@ -27,7 +27,7 @@ void Logging::messageHandler(QtMsgType type, const QMessageLogContext &context,
     break;
   }
   // Write category and msg
-  out << context.category << ": " << msg << endl;
+  out << context.category << ": " << msg << Qt::endl;
   out.flush(); // Flush buffer
 }
 

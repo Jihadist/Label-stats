@@ -53,3 +53,6 @@ else:unix|win32-g++: PRE_TARGETDEPS += $$PWD/../../../../../CppLibs/qtcsv/build/
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES += \
+    classes.qmodel

@@ -208,6 +208,7 @@ int Settings::selectArtist() {
     qDebug() << selectQuery.lastQuery();
     qDebug() << "error";
     qDebug() << selectQuery.lastError();
+    db.close();
     return -2;
   }
   db.close();
@@ -249,6 +250,7 @@ int Settings::selectTracks(const QString &Artist) {
     qDebug() << selectQuery.lastQuery();
     qDebug() << "error";
     qDebug() << selectQuery.lastError();
+    db.close();
     return -2;
   }
   if (Artist != bufferString)
@@ -440,6 +442,7 @@ void Settings::on_open_triggered() {
 
 void Settings::on_openRecent_triggered() {
   QString path = settings.value("LatestProjectPath").toString();
+
   if (!path.isEmpty())
     openProject(path);
   else
